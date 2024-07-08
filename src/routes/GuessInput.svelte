@@ -4,6 +4,9 @@
     let message = '';
     let attempts = 0;
     let lowestAttempts = Infinity; 
+    /**
+     * @type {HTMLInputElement}
+     */
     let inputRef;
   
     function handleGuess() {
@@ -32,6 +35,9 @@
       message += " A new number has been generated. Try to guess it!";
     }
 
+    /**
+     * @param {{ key: string; }} event
+     */
     function handleKeydown(event) {
     if (event.key === "Enter") {
       handleGuess();
@@ -41,7 +47,13 @@
   <div class="container">
     <p class="message">{message}</p>
 
-    <input type="number" bind:value={userGuessInput} bind:this={inputRef} title="Enter a number between 1 and 100...Goodluck!" placeholder="Enter Your Guess Here" on:keydown={handleKeydown} />
+    <input type="number" 
+        bind:value={userGuessInput} 
+        bind:this={inputRef} 
+        title="Enter a number between 1 and 100...Goodluck!" 
+        placeholder="Enter Your Guess Here" 
+        on:keydown={handleKeydown} 
+    />
     <label for="userGuessInput">Enter Guess</label>
     <button on:click={handleGuess}>Submit</button>
   
